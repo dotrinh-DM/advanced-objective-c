@@ -12,6 +12,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self checkBitOnOffPos];
+}
+
+-(void) checkBitOnOffPos {
+    int numToCheck = 3; //0000 0011
+    int posToCheck = 6; // 0 -> 6
+    
+    int onOff = numToCheck & (1 << posToCheck);
+    if(onOff){
+        NSLog(@"vi tri so %d on", posToCheck);
+    } else{
+        NSLog(@"vi tri so %d off", posToCheck);
+    }
+}
+
+-(void) convert3ByteToInt {
     unsigned char data[] = { 0x65, 0x66, 0x67};
     long ret = 0;
     ret |= (long)(data[0] & 0x7F) << 25;
@@ -29,5 +45,4 @@
      00000000 11111111 11111111 11111111
      */
 }
-
 @end
